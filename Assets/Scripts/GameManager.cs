@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
@@ -19,8 +20,13 @@ public class GameManager : MonoBehaviour
     public TargetSpawn targetSpawn;
     [SerializeField]
     public UIManager uiManager;
+    [SerializeField]
+    public TargetPool targetPool; 
+
     private Vector2 _worldPoint;
     private RaycastHit2D _hit;
+
+    public static Action Poison;
     private void Awake()
     {
         _instance = this;
@@ -35,7 +41,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
 
              _worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition+Vector3.forward * 10);

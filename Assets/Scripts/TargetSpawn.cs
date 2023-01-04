@@ -13,7 +13,8 @@ public class TargetSpawn : MonoBehaviour
 
     private  WaitForSeconds _wait;
     private Vector3 _spawnPos;
-    private GameObject _spawndTarget;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +26,16 @@ public class TargetSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameManager.Instance.targetPool.Activate(0);
+
+        }
+        */
     }
+
+
     IEnumerator SpawnTarget()
     {
         while (true)
@@ -34,13 +43,16 @@ public class TargetSpawn : MonoBehaviour
             _spawnPos = new Vector3(Random.Range(-8.5f, 8.5f), Random.Range(-5f, 5f), 0);
             if (Random.value > 0.5)
             {
-                Instantiate(_safeTarget, _spawnPos, Quaternion.identity);
+                GameManager.Instance.targetPool.Activate(0);
             }
             else
             {
-                Instantiate(_dangerTarget, _spawnPos, Quaternion.identity);
+                GameManager.Instance.targetPool.Activate(1);
             }
             yield return _wait;
         }
     }
+
+
+
 }
