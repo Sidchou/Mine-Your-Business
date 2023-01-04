@@ -9,8 +9,8 @@ public class UIManager : MonoBehaviour
     TMP_Text _scoreTxt;
     [SerializeField]
     TMP_Text _lifeTxt;
-    int _score = 0;
-    int _life = 5;
+    static int _score = 0;
+    static int _life = 5;
     // Start is called before the first frame update
     void Start()
     {
