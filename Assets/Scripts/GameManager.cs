@@ -50,11 +50,13 @@ public class GameManager : MonoBehaviour
             //If something was hit, the RaycastHit2D.collider will not be null.
             if (_hit.collider != null)
             {
+
                 ITargetable obj = _hit.collider.GetComponent<ITargetable>();
                 if (obj != null)
                 {
                     obj.OnClick();
                 }
+
             }
         }
     }
