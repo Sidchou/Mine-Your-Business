@@ -11,12 +11,24 @@ public class UIManager : MonoBehaviour
     TMP_Text _lifeTxt;
     static int _score = 0;
     static int _life = 5;
+    [SerializeField]
+    TMP_Text _gameover;
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        GameManager.GameOverEvent += GameOver;
+        GameManager.PoisonEvent += GameOver;
 
+    }
+    private void OnDisable()
+    {
+        void Start()
+        {
+            GameManager.GameOverEvent -= GameOver;
+            GameManager.PoisonEvent -= GameOver;
+
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -31,6 +43,10 @@ public class UIManager : MonoBehaviour
     {
         _score += 10; 
         _scoreTxt.text = "Score: " +_score;
+    }
+    private void GameOver()
+    {
+        _gameover.gameObject.SetActive(true);
     }
 
 }

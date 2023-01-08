@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,12 +22,22 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public UIManager uiManager;
     [SerializeField]
-    public TargetPool targetPool; 
+    public TargetPool targetPool;
+    [SerializeField]
+    public Lantern lantern;
+    [SerializeField]
+    public StageChange stageChange;
+    [SerializeField]
+    public Animator gameOverAnim;
 
     private Vector2 _worldPoint;
     private RaycastHit2D _hit;
 
+    public bool gameover = false;
     public static Action Poison;
+
+    public static Action GameOverEvent;
+    public static Action PoisonEvent;
     private void Awake()
     {
         _instance = this;
@@ -59,6 +70,19 @@ public class GameManager : MonoBehaviour
 
             }
         }
+    }
+
+    public void GameOver() 
+    {
+        gameover = true;
+        gameOverAnim.SetTrigger("GameOver");
+        GameOverEvent?.Invoke();
+    }
+
+    public void Restart()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
 }
