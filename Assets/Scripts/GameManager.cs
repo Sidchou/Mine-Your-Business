@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +22,8 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
     [SerializeField]
     public TargetPool targetPool;
+    [SerializeField]
+    public MiningSoundPool miningSoundPool;
     [SerializeField]
     public Lantern lantern;
     [SerializeField]

@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class TargetSpawn : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _safeTarget;
-    [SerializeField]
-    private GameObject _dangerTarget;
+
     [SerializeField]
     private float _spawnTime = 2;
 

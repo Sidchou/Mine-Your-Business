@@ -21,6 +21,7 @@ public class Targets : MonoBehaviour, ITargetable
     public void OnClick()
     {
         GameManager.Instance.targetPool.Deactivate(this.gameObject);
+        GameManager.Instance.miningSoundPool.Request().transform.position = transform.position;
         if (_danger)
         {
             //GameManager.Instance.uiManager.UpdateLife();

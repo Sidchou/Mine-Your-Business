@@ -18,7 +18,7 @@ public class Poison : MonoBehaviour
         _color = _image.color;
         _color.a = 0;
         _image.color = _color;
-        Invoke("Poisoned", 1) ;
+        GameManager.PoisonEvent += Poisoned;
     }
 
     // Update is called once per frame
@@ -38,5 +38,6 @@ public class Poison : MonoBehaviour
             _image.color =_color;
             yield return _wait;
         }
+        
     }
 }

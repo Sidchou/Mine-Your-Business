@@ -7,7 +7,7 @@ public class StageChange : MonoBehaviour
     [SerializeField]
     private List<Sprite> sprites = new List<Sprite>();
     SpriteRenderer spriteRenderer;
-    private int life = 3;
+    private int life = 0;
     // Start is called before the first frame update
     void Start()
     {
